@@ -23,8 +23,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -35,7 +37,7 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
-    width: 300px;
+    width: 320px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -135,6 +137,68 @@ h1 {
 
 #generate-btn:active {
     transform: scale(0.98);
+}
+
+/* Contact Section */
+.contact-section {
+    margin-top: 40px;
+}
+
+.contact-section hr {
+    border: none;
+    border-top: 1px solid var(--text-color);
+    opacity: 0.1;
+    margin: 20px 0;
+}
+
+.contact-section h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 14px;
+    opacity: 0.7;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    height: 80px;
+    resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    opacity: 1;
+    outline: none;
+}
+
+.submit-btn {
+    background: none;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
 }
 
 /* Animations */
