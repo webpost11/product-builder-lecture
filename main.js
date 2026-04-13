@@ -22,8 +22,8 @@ const menus = {
 };
 
 const menuImages = {
-    '피자': 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200',
-    'Pizza': 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200'
+    '피자': 'pizza-5275191_1280.jpg',
+    'Pizza': 'pizza-5275191_1280.jpg'
 };
 
 // Theme toggle logic
