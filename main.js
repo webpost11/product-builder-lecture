@@ -2,6 +2,7 @@ const generateBtn = document.getElementById('generate-btn');
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 const menuDisplay = document.querySelector('.menu-display');
+const imageContainer = document.getElementById('image-container');
 const lang = document.documentElement.lang || 'ko';
 
 const menus = {
@@ -18,6 +19,11 @@ const menus = {
         'Donkatsu', 'Steak', 'Pasta', 'Tteokbokki', 'Samgyeopsal',
         'Tacos', 'Curry', 'Dim Sum', 'Fish and Chips', 'Burrito'
     ]
+};
+
+const menuImages = {
+    '피자': 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200',
+    'Pizza': 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200'
 };
 
 // Theme toggle logic
@@ -38,17 +44,30 @@ themeToggle.addEventListener('click', () => {
 // Menu generation logic
 generateBtn.addEventListener('click', () => {
     menuDisplay.classList.add('fade-out');
+    imageContainer.classList.add('fade-out');
     
     setTimeout(() => {
         const currentMenus = menus[lang] || menus['en'];
         const randomIndex = Math.floor(Math.random() * currentMenus.length);
         const selectedMenu = currentMenus[randomIndex];
+        
         menuDisplay.textContent = selectedMenu;
+        
+        // Check for image
+        if (menuImages[selectedMenu]) {
+            imageContainer.innerHTML = `<img src="${menuImages[selectedMenu]}" alt="${selectedMenu}" class="menu-image">`;
+        } else {
+            imageContainer.innerHTML = '';
+        }
+
         menuDisplay.classList.remove('fade-out');
         menuDisplay.classList.add('fade-in');
+        imageContainer.classList.remove('fade-out');
+        imageContainer.classList.add('fade-in');
         
         setTimeout(() => {
             menuDisplay.classList.remove('fade-in');
+            imageContainer.classList.remove('fade-in');
         }, 500);
     }, 300);
 });
