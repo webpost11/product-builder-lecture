@@ -35,6 +35,10 @@
             <hr style="opacity: 0.1; margin: 20px 0;">
             <div id="disqus_thread"></div>
             <script>
+                var disqus_config = function () {
+                    this.page.url = window.location.href;  
+                    this.page.identifier = window.location.pathname; 
+                };
                 (function() {
                 var d = document, s = d.createElement('script');
                 s.src = 'https://productbuilder-uac2oyeqem.disqus.com/embed.js';
