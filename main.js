@@ -1,9 +1,22 @@
 const generateBtn = document.getElementById('generate-btn');
 const themeToggle = document.getElementById('theme-toggle');
+const introOverlay = document.getElementById('intro-overlay');
 const body = document.body;
 const menuDisplay = document.querySelector('.menu-display');
 const imageContainer = document.getElementById('image-container');
 const lang = document.documentElement.lang || 'ko';
+
+// Intro Overlay removal
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        if (introOverlay) {
+            introOverlay.classList.add('hidden');
+            setTimeout(() => {
+                introOverlay.style.display = 'none';
+            }, 800); // Wait for fade-out animation
+        }
+    }, 2000); // Show for 2 seconds
+});
 
 const menus = {
     ko: [

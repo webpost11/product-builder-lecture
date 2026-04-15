@@ -30,6 +30,30 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #002b36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+}
+
+#intro-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.banana-heart {
+    text-align: center;
+    transform: scale(1.5);
+}
+
 .container {
     background-color: var(--container-bg);
     padding: 40px;
