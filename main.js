@@ -84,39 +84,75 @@ themeToggle.addEventListener('click', () => {
     let theme = 'light';
     if (body.classList.contains('dark-mode')) {
         theme = 'dark';
-    }
-    localStorage.setItem('theme', theme);
-});
+    const menuTip = document.getElementById('menu-tip');
+    const lang = document.documentElement.lang || 'ko';
 
-// Menu generation logic
-generateBtn.addEventListener('click', () => {
-    menuDisplay.classList.add('fade-out');
-    imageContainer.classList.add('fade-out');
-    
-    setTimeout(() => {
-        const currentMenus = menus[lang] || menus['en'];
-        const randomIndex = Math.floor(Math.random() * currentMenus.length);
-        const selectedMenu = currentMenus[randomIndex];
-        
-        menuDisplay.textContent = selectedMenu;
-        
-        // Image handling (using Nano Banana optimized image mapping)
-        const imageUrl = menuImages[selectedMenu];
-        if (imageUrl) {
-            imageContainer.innerHTML = `<img src="${imageUrl}" alt="${selectedMenu}" class="menu-image">`;
-        } else {
-            // Fallback for missing images
-            imageContainer.innerHTML = `<div class="image-placeholder">No Image Available</div>`;
+    const menuTips = {
+        ko: {
+            '김치찌개': '단백질이 풍부한 두부를 넣어 드시면 더욱 좋습니다.',
+            '된장찌개': '제철 채소를 듬뿍 넣으면 비타민 섭취에 도움이 됩니다.',
+            '비빔밥': '나물을 많이 넣어 식이섬유를 보충해보세요.',
+            '불고기': '쌈 채소와 함께 드시면 포만감이 오래 유지됩니다.',
+            '제육볶음': '마늘과 함께 볶으면 풍미가 깊어집니다.',
+            '치킨': '샐러드와 함께 드시는 것을 추천합니다.',
+            '피자': '피클보다는 가벼운 샐러드를 곁들여보세요.',
+            '햄버거': '천천히 씹어 드시면 소화에 더욱 좋습니다.',
+            '초밥': '따뜻한 미소 된장국과 잘 어울립니다.',
+            '라멘': '숙주를 추가하여 아삭한 식감을 살려보세요.',
+            '짜장면': '단무지 대신 양파를 춘장에 찍어 드시면 건강에 좋습니다.',
+            '짬뽕': '해산물이 풍부하여 고단백 식사로 적합합니다.',
+            '탕수육': '소스에 채소를 많이 넣어 비타민을 챙겨보세요.',
+            '마라탕': '청경채와 버섯을 많이 넣으면 영양 균형이 좋아집니다.',
+            '쌀국수': '레몬즙을 살짝 뿌리면 비타민 C 섭취를 돕습니다.',
+            '돈까스': '양배추 샐러드를 듬뿍 곁들여 드세요.',
+            '스테이크': '아스파라거스와 함께 구워 영양을 더해보세요.',
+            '파스타': '통밀면을 선택하시면 혈당 관리에 유리합니다.',
+            '떡볶이': '삶은 달걀을 추가하여 단백질을 보충하세요.',
+            '삼겹살': '상추, 깻잎과 함께 드시면 칼륨 섭취에 좋습니다.'
         }
+    };
 
-        menuDisplay.classList.remove('fade-out');
-        menuDisplay.classList.add('fade-in');
-        imageContainer.classList.remove('fade-out');
-        imageContainer.classList.add('fade-in');
-        
+    // ... (기존 변수 선언 유지)
+
+    // Menu generation logic
+    generateBtn.addEventListener('click', () => {
+        menuDisplay.classList.add('fade-out');
+        imageContainer.classList.add('fade-out');
+        if(menuTip) menuTip.classList.add('fade-out');
+
         setTimeout(() => {
-            menuDisplay.classList.remove('fade-in');
-            imageContainer.classList.remove('fade-in');
-        }, 500);
-    }, 300);
-});
+            const currentMenus = menus[lang] || menus['en'];
+            const randomIndex = Math.floor(Math.random() * currentMenus.length);
+            const selectedMenu = currentMenus[randomIndex];
+
+            menuDisplay.textContent = selectedMenu;
+
+            // Add Tip
+            if(menuTip) {
+                menuTip.textContent = menuTips[lang] ? (menuTips[lang][selectedMenu] || '') : '';
+            }
+
+            // Image handling
+            const imageUrl = menuImages[selectedMenu];
+            if (imageUrl) {
+                imageContainer.innerHTML = `<img src="${imageUrl}" alt="${selectedMenu}" class="menu-image">`;
+            } else {
+                imageContainer.innerHTML = `<div class="image-placeholder">No Image Available</div>`;
+            }
+
+            menuDisplay.classList.remove('fade-out');
+            menuDisplay.classList.add('fade-in');
+            imageContainer.classList.remove('fade-out');
+            imageContainer.classList.add('fade-in');
+            if(menuTip) {
+                menuTip.classList.remove('fade-out');
+                menuTip.classList.add('fade-in');
+            }
+
+            setTimeout(() => {
+                menuDisplay.classList.remove('fade-in');
+                imageContainer.classList.remove('fade-in');
+                if(menuTip) menuTip.classList.remove('fade-in');
+            }, 500);
+        }, 300);
+    });

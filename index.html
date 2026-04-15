@@ -6,51 +6,78 @@
     <meta name="google-adsense-account" content="ca-pub-4934809159678236">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘의 저녁 메뉴 추천</title>
+    <meta name="description" content="매일 반복되는 메뉴 고민을 해결해드리는 인공지능 저녁 메뉴 추천 서비스입니다. 엄선된 20가지 이상의 한식, 양식, 일식 메뉴를 만나보세요.">
+    <meta name="keywords" content="저녁 메뉴 추천, 오늘 뭐먹지, 식사 메뉴, 점심 추천, 요리 아이디어">
+    <title>오늘의 저녁 메뉴 추천 - 고민 해결 서비스</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="top-bar">
-            <a href="en.html" class="lang-switch">EN</a>
-            <button id="theme-toggle">테마 변경</button>
-        </div>
-        <h1>오늘 뭐 먹지?</h1>
-        <div id="image-container" class="image-container"></div>
-        <div class="menu-display">메뉴를 추천해드릴게요!</div>
-        <button id="generate-btn">메뉴 추천받기</button>
+        <header class="top-bar">
+            <nav>
+                <a href="en.html" class="lang-switch">EN</a>
+                <button id="theme-toggle">테마 변경</button>
+            </nav>
+        </header>
 
-        <div class="contact-section">
-            <hr>
-            <h3>제휴 문의</h3>
-            <form action="https://formspree.io/f/mgorwbpq" method="POST">
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="이메일 주소" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" placeholder="문의 내용을 입력해주세요" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">보내기</button>
-            </form>
-        </div>
+        <main>
+            <section class="hero-section">
+                <h1>오늘 저녁, 무엇을 먹을까요?</h1>
+                <p class="subtitle">결정 장애를 해결해드리는 스마트한 메뉴 추천 시스템</p>
+            </section>
 
-        <div id="disqus_section" style="margin-top: 40px;">
-            <hr style="opacity: 0.1; margin: 20px 0;">
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = window.location.href;  
-                    this.page.identifier = window.location.pathname; 
-                };
-                (function() {
-                var d = document, s = d.createElement('script');
-                s.src = 'https://productbuilder-lyvvv96rdm.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </div>
+            <div id="image-container" class="image-container"></div>
+            
+            <article class="result-box">
+                <div class="menu-display">추천 버튼을 눌러보세요!</div>
+                <div id="menu-tip" class="menu-tip"></div>
+            </article>
+
+            <button id="generate-btn">랜덤 메뉴 추천받기</button>
+        </main>
+
+        <footer class="site-footer">
+            <section class="about-section">
+                <h3>서비스 소개</h3>
+                <p>본 서비스는 현대인들의 가장 큰 고민 중 하나인 '메뉴 선정'을 돕기 위해 개발되었습니다. 건강과 맛을 고려한 다양한 선택지를 제공합니다.</p>
+            </section>
+
+            <div class="contact-section">
+                <hr>
+                <h3>제휴 및 문의</h3>
+                <form action="https://formspree.io/f/mgorwbpq" method="POST">
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="이메일 주소" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="궁금하신 점이나 제안 사항을 입력해주세요" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">문의 보내기</button>
+                </form>
+            </div>
+
+            <div class="legal-links">
+                <a href="#privacy" onclick="alert('본 사이트는 Google AdSense를 사용하여 광고를 게재하며, 쿠키를 통해 맞춤형 광고를 제공할 수 있습니다.')">개인정보처리방침</a> | 
+                <a href="#terms">이용약관</a>
+            </div>
+
+            <div id="disqus_section" style="margin-top: 40px;">
+                <hr style="opacity: 0.1; margin: 20px 0;">
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                        this.page.url = window.location.href;  
+                        this.page.identifier = window.location.pathname; 
+                    };
+                    (function() {
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://productbuilder-lyvvv96rdm.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+            </div>
+        </footer>
     </div>
     <script src="main.js"></script>
 </body>
